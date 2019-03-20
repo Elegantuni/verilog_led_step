@@ -15,7 +15,7 @@ always @(posedge clk)
 begin
 	LEDs[0] <= (number1 == 0) ? 1 : 0;
 	LEDs[1] <= (number1 == 1) ? 1 : 0;
-   LEDs[2] <= (number1 == 2) ? 1 : 0;
+   	LEDs[2] <= (number1 == 2) ? 1 : 0;
 	LEDs[3] <= (number1 == 3) ? 1 : 0;
 	LEDs[4] <= (number1 == 4) ? 1 : 0;
 	LEDs[5] <= (number1 == 5) ? 1 : 0;
