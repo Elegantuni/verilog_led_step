@@ -3,10 +3,12 @@ module demo(
 	output [9:0] LED
 );
 
+`define CLOCK_FREQ 50000000
+`define TIME_DELAY 1
+
 integer number1 = 0;
 reg [9:0] LEDs;
-integer total1 = 0;
-integer total2 = 0;
+reg [31:0] count=0;
 assign LED = LEDs;
 
 always @(posedge clk) 
@@ -22,18 +24,12 @@ begin
 	LEDs[8] <= (number1 == 8) ? 1 : 0;
 	LEDs[9] <= (number1 == 9) ? 1 : 0;
 	
-	total1 = total1 + 1;
+	count <= count + 1;
 	
-	if (total1 == 10000)
-	begin
-		total2 = total2 + 1;
-		total1 = 0;
-	end
-	
-	if (total2 == 10000)
+	if (count == `CLOCK_FREQ*`TIME_DELAY)
 	begin
 		number1 = number1 + 1;
-		total2 = 0;
+		count <= 0;
 	end
 	
 	if (number1 > 9)
